@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>高血压居家管理问答助手</title>
+<style>
+body{
+ font-family:"Microsoft YaHei",Arial,sans-serif;
+ background:#f6f8fb;
+ margin:0;
+ padding:20px;
+ color:#333;
+}
+.container{
+ max-width:900px;
+ margin:auto;
+ background:white;
+ padding:30px;
+ border-radius:16px;
+ box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+h1{text-align:center;}
+.card{
+ background:#f8fafc;
+ padding:15px;
+ border-radius:10px;
+ margin:15px 0;
+}
+button{
+ background:#2563eb;
+ color:white;
+ border:0;
+ padding:10px 16px;
+ border-radius:8px;
+ cursor:pointer;
+ margin:5px;
+}
+input{
+ width:75%;
+ padding:10px;
+ border:1px solid #ccc;
+ border-radius:8px;
+}
+.answer{
+ margin-top:20px;
+ padding:18px;
+ background:#eef6ff;
+ border-radius:10px;
+}
+.warn{
+ background:#fff7ed;
+ padding:15px;
+ border-radius:10px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>❤️ 高血压居家管理问答助手</h1>
+<p>
+本助手面向高血压患者及家属，提供血压监测、生活方式管理、
+药物注意事项和风险识别等健康教育服务。
+</p>
+<div class="card">
+<h3>快速咨询</h3>
+<button onclick="setQ('家庭血压怎么测？')">血压测量</button>
+<button onclick="setQ('高血压患者怎么饮食？')">饮食管理</button>
+<button onclick="setQ('高血压可以运动吗？')">运动建议</button>
+<button onclick="setQ('降压药可以停吗？')">药物管理</button>
+</div>
+<input id="question" placeholder="请输入您的问题">
+<button onclick="ask()">提交</button>
+<div id="answer" class="answer">
+您好，我是高血压居家管理助手，请输入您的问题。
+</div>
+<div class="card">
+<h3>📊 家庭血压参考</h3>
+<p>
+一般情况下，家庭血压长期 ≥135/85 mmHg
+提示可能存在高血压，需要进一步评估。
+</p>
+</div>
+<div class="card">
+<h3>🏃 日常管理建议</h3>
+<ul>
+<li>减少盐摄入，建议每日食盐不超过5g。</li>
+<li>保持规律运动，如快走等中等强度运动。</li>
+<li>坚持记录家庭血压变化。</li>
+<li>按医生指导规律服药。</li>
+</ul>
+</div>
+<div class="warn">
+<b>⚠️ 重要提示：</b><br>
+如果出现胸痛、呼吸困难、意识异常、严重头痛等情况，
+请及时就医。本助手仅用于健康教育，不能替代医生诊断和治疗。
+</div>
+</div>
+<script>
+function setQ(t){
+ document.getElementById("question").value=t;
+}
+function ask(){
+let q=document.getElementById("question").value;
+let ans="建议咨询专业医生获取个体化建议。";
+if(q.includes("测")||q.includes("血压")){
+ans="家庭血压测量方法：测量前休息5分钟；保持坐位；手臂与心脏同高；选择合适袖带；建议早晚固定时间测量并记录。";
+}
+else if(q.includes("饮食")||q.includes("吃")||q.includes("盐")){
+ans="饮食建议：减少盐摄入，多吃蔬菜、水果、全谷物和低脂奶制品，减少腌制食品和过量饮酒。";
+}
+else if(q.includes("运动")){
+ans="血压稳定患者通常可以运动。推荐每周至少150分钟中等强度有氧运动，如快走、骑车等，运动应循序渐进。";
+}
+else if(q.includes("药")||q.includes("停")){
+ans="不要自行停用降压药。血压下降可能来自药物控制，调整方案需要医生评估。";
+}
+else if(q.includes("高")||q.includes("标准")){
+ans="高血压通常需要结合多次血压测量结果进行判断，不能仅依据一次测量结果。";
+}
+else if(q.includes("180")||q.includes("急")){
+ans="如果血压明显升高并伴胸痛、呼吸困难、神经系统症状等，应立即寻求医疗帮助。";
+}
+document.getElementById("answer").innerHTML=
+"<b>助手回答：</b><br>"+ans+
+"<br><br><small>提示：本回答用于患者教育，不替代临床诊疗。</small>";
+}
+</script>
+</body>
+</html>
